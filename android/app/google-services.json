@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698235063823",
+    "project_id": "pruebaespaciodigital",
+    "storage_bucket": "pruebaespaciodigital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698235063823:android:d08dc04b76faeb5d211d7a",
+        "android_client_info": {
+          "package_name": "com.example.prueba_espacio_digital"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAPaO4oFQz9hD4Hk6nejOrgNiAHkleYrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
