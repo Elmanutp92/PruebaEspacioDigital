@@ -12,16 +12,15 @@ Future<void> addOrder(
 
     // Añadir el documento y obtener la referencia
     DocumentReference<Map<String, dynamic>> documentRef =
-        await db.collection('orders').doc(user!.uid).collection('orders').add({
+        await db.collection('users').doc(user!.uid).collection('orders').add({
       'description': order.description,
       'price': order.price,
     });
 
     String documentId = documentRef.id;
 
-    // Actualizar el documento con el ID
     await db
-        .collection('orders')
+        .collection('users')
         .doc(user.uid)
         .collection('orders')
         .doc(documentId)
@@ -30,7 +29,7 @@ Future<void> addOrder(
     });
 
     DocumentReference documentReference = db
-        .collection('orders')
+        .collection('users')
         .doc(user.uid)
         .collection('orders')
         .doc(documentId);

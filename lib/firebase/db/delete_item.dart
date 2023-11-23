@@ -8,30 +8,35 @@ Future<void> deleteItem(
 
   try {
     setLoading();
+
+    // Elimina el documento
     await db
-        .collection('orders')
+        .collection('users')
         .doc(user!.uid)
         .collection('orders')
         .doc(documentId)
         .delete();
 
-    DocumentReference documentReference = db
-        .collection('orders')
+    // Verifica si el documento se eliminó correctamente
+    DocumentSnapshot documentSnapshot = await db
+        .collection('users')
         .doc(user.uid)
         .collection('orders')
-        .doc(documentId);
-    if (documentReference.id.isEmpty) {
+        .doc(documentId)
+        .get();
+
+    if (!documentSnapshot.exists) {
       notification('Se ha borrado correctamente.');
     } else {
       notification('Error al borrar en Firestore.');
     }
   } on FirebaseException catch (e) {
-    notification('Error al borrar en Firestore ${e.message}');
-    // Manejar las excepciones
-
-    notification('Error al guardar en Firestore.');
-  } catch (e) {
-    notification('Error al borrar en Firestore ${e.toString()}');
+    // Maneja excepciones específicas de Firebase
+    notification('Error al borrar en Firestore: ${e.message}');
+  } catch (e, stackTrace) {
+    // Maneja otras excepciones y registra detalles para depuración
+    print('Error al borrar en Firestore: $e\n$stackTrace');
+    notification('Error al borrar en Firestore.');
   } finally {
     setLoading();
   }

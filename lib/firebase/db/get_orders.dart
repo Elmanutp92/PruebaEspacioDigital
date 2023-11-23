@@ -9,7 +9,7 @@ Stream<List<Item>> getOrders() {
 
   try {
     return db
-        .collection('orders')
+        .collection('users')
         .doc(user!.uid)
         .collection('orders')
         .snapshots()

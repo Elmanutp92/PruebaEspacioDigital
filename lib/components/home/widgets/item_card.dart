@@ -3,9 +3,11 @@ import 'package:prueba_espacio_digital/firebase/db/delete_item.dart';
 import 'package:prueba_espacio_digital/models/item.dart';
 
 class ItemCard extends StatefulWidget {
+  final Function notification;
   const ItemCard({
     super.key,
     required this.item,
+    required this.notification,
   });
 
   final Item item;
@@ -41,7 +43,8 @@ class _ItemCardState extends State<ItemCard> {
                   Text(widget.item.description),
                   IconButton(
                       onPressed: () {
-                        deleteItem(widget.item.id, notification, setLoading);
+                        deleteItem(
+                            widget.item.id, widget.notification, setLoading);
                       },
                       icon: const Icon(Icons.delete)),
                 ],
@@ -57,14 +60,6 @@ class _ItemCardState extends State<ItemCard> {
               )
             ],
           ));
-  }
-
-  void notification(String message, context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
   }
 
   void setLoading() {

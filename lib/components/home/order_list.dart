@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+
 import 'package:flutter/material.dart';
 import 'package:prueba_espacio_digital/components/home/widgets/item_card.dart';
 import 'package:prueba_espacio_digital/firebase/db/delete_item.dart';
@@ -22,7 +23,7 @@ class _OrderListState extends State<OrderList> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    return StreamBuilder<List<Item>>(
         stream: getOrders(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -73,7 +74,10 @@ class _OrderListState extends State<OrderList> {
                             itemBuilder: (context, index) {
                               final Item item = items[index];
                               return FadeIn(
-                                child: ItemCard(item: item),
+                                child: ItemCard(
+                                  item: item,
+                                  notification: notification,
+                                ),
                               );
                             })
                         : ListView.builder(
