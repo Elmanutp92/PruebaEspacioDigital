@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
         canPop: false,
         child: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             automaticallyImplyLeading: false,
             title: const Text('Prueba Espacio Digital'),
           ),
