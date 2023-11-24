@@ -23,32 +23,34 @@ class LoginScreen extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                const Text(
-                  'Iniciar sesión',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Text(
+                    'Iniciar sesión',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                FormUse(
-                  notification: notification,
-                  labelButton: 'Iniciar sesión',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const RegisterScreen();
-                    }));
-                  },
-                  child: const Text('Registrarse'),
-                ),
-              ],
+                  FormUse(
+                    notification: notification,
+                    labelButton: 'Iniciar sesión',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const RegisterScreen();
+                      }));
+                    },
+                    child: const Text('Registrarse'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
